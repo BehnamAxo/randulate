@@ -1,0 +1,27 @@
+{
+  "name": "randulate",
+  "version": "1.0.0",
+  "description": "Randulate is an npm package that simplifies the process of generating fake data for development, testing, and various other use cases. It allows you to create randomized data based on provided specifications and data types.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "mock",
+    "random",
+    "data",
+    "generation",
+    "simulate",
+    "fabrication"
+  ],
+  "author": "Behnam Amiri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BehnamAxo/randulate/issues"
+  },
+  "homepage": "https://github.com/BehnamAxo/randulate#readme"
+}
