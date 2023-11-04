@@ -1,3 +1,3 @@
-const randomFact = require('randulate');
+const Randulate = require('randulate');
 
-console.log(randomFact());
+console.log(Randulate.firstName());
