@@ -20,9 +20,19 @@ function Randulate() {
     return giveMeRandomInt(0, 1) === 1 ? maleFirstName[int] : femaleFirstName[int];
   }
 
-  this.lastName = () => 'This is a last name';
+  /**
+   * @returns {lastName} A random last name
+   */
+  this.lastName = () => {
+    const int = giveMeRandomInt(0, 1499);
+    return lastName[int];
+  }
 
-  this.name = () => 'This is a name';
+  /**
+   * @param {gender} - The gender value. Use 1 for male and 0 for female.
+   * @returns {firstName} A random name
+   */
+  this.name = (gender) => `${this.firstName(gender)} ${this.lastName()}`;
 }
 
 module.exports = new Randulate();
