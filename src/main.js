@@ -1,10 +1,8 @@
-const { address } = require('./address');
-const { firstName, lastName, name } = require('./person');
+const address = require('./address');
+const person = require('./person');
 
 
 module.exports = {
-  address,
-  firstName,
-  lastName,
-  name
+  ...address,
+  ...person
 };
