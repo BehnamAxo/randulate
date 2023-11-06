@@ -32,7 +32,7 @@ const lastName = () => lastNames[giveMeRandomInt(0, 1499)];
 
 
 /**
- * @param {string} gender - The gender value. Use 1 for male and 0 for female.
+ * @param {string} gender - The gender value. Use 1 for male and 0 for female. (optional)
  *
  * @returns {string} A random name
  */
