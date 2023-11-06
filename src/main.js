@@ -1,3 +1,8 @@
-const randomFact = () => 'Hello there! Did you know that honey never spoils?';
+const address = require('./address');
+const person = require('./person');
 
-module.exports = randomFact;
+
+module.exports = {
+  ...address,
+  ...person
+};
