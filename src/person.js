@@ -29,7 +29,7 @@ const firstName = (gender) => {
 /**
  * @returns {string} A random last name
  */
-const lastName = () => lastNames[giveMeRandomInt(0, 1499)];
+const lastName = () => lastNames[giveMeRandomInt(0, lastNames.length - 1)];
 
 
 /**
@@ -94,10 +94,12 @@ const createEmailFromNames = (firstName, lastName, nameOrder = 'f') => {
     throw new Error('Both first and last names are required.');
   }
 
+  const randomInt = giveMeRandomInt(0, domains.length - 1);
+
   if (nameOrder === 'f') {
-    return `${firstName}.${lastName}@gmail.com`;
+    return `${firstName}.${lastName}@${domains[randomInt]}`;
   } else if (nameOrder === 'l') {
-    return `${lastName}.${firstName}@gmail.com`;
+    return `${lastName}.${firstName}@${domains[randomInt]}`;
   } else {
     throw new Error('Invalid "nameOrder" value. Use "f" or "l".');
   }
