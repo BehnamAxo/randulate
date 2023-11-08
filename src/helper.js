@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 /**
  * Generates a random integer between the specified minimum and maximum values (inclusive).
  *
@@ -6,6 +8,17 @@
  * @returns {number} A random integer within the specified range.
  */
 const giveMeRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+
+/**
+ * Generates a random 3-digit number as a string with leading zeros if necessary.
+ *
+ * @returns {string} A random 3-digit number in the format 'XXX'.
+ */
+const giveMeThreeDigits = () => {
+  const randomNumber = Math.floor(Math.random() * (999 - 100 + 1) + 100);
+  return String(randomNumber).padStart(3, '0');
+}
 
 
 /**
@@ -29,7 +42,38 @@ const generateObjectOrArray = (generator, isArray, size) => {
   }
 };
 
+
+/**
+ * Generates a version 4 UUID (Universally Unique Identifier) based on random bytes.
+ *
+ * @returns {string} A version 4 UUID in string format.
+ */
+const generateUUID = () => {
+  /**
+   * Generate 16 random bytes to form the UUID.
+   * @type {Buffer}
+   */
+  const bytes = crypto.randomBytes(16);
+
+  // Set the version (4) and variant (2)
+  // `0x40` sets the 7th byte to '01000000'
+  // `0x80` sets the 9th byte to '10000000'
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+
+  /**
+   * Convert the random bytes to a UUID string.
+   * @type {string}
+   */
+  const uuid = bytes.toString('hex', 0, 16);
+
+  return uuid;
+}
+
+
 module.exports = {
   generateObjectOrArray,
-  giveMeRandomInt
+  generateUUID,
+  giveMeRandomInt,
+  giveMeThreeDigits
 }
