@@ -80,6 +80,72 @@ Generates an array or object of full names based on the specified gender and siz
 
 Returns an array of full names if `isArray` is `true`, or an object with key-value pairs if `isArray` is `false`.
 
+
+### `emailFromNames` Function
+
+Creates an email address from the given first and last names.
+
+- `firstName` (string): The first name.
+- `lastName` (string): The last name.
+- `nameOrder` (optional, string): The order in which the first and last names should be used ('f' for firstName first or 'l' for lastName first).
+- **Throws**: An error if either the first name or last name is missing, or if an invalid 'nameOrder' value is provided.
+Returns a string, the generated email address.
+
+---
+
+### `randomEmail` Function
+
+Generates a random email address based on optional gender-specific names.
+
+- `gender` (optional, string): An optional parameter representing the gender. Use 1 for male and 0 for female.
+- **Throws**: An error if an invalid gender value is provided.
+Returns a string, the generated random email address.
+
+---
+
+### `emailByName` Function
+
+Generates an email address based on a name and a list of domains.
+- `name` (string): The name to create an email address from.
+- Returns a string, an email address in the format 'name@domain'.
+
+---
+
+### `gender` Function
+
+Generates a random gender as either 'Female' or 'Male.
+- Returns a string, a randomly chosen gender, either 'Female' or 'Male'.
+
+---
+
+### `usPhoneNumber` Function
+
+Generates a random U.S. phone number in the format '(XXX) XXX-XXXX'.
+- Returns a string, a random U.S. phone number in the specified format.
+
+---
+
+### `SSN` Function
+
+Generates a random Social Security Number (SSN) in the format 'XXX-XXX-XXX'.
+- Returns a string, a random SSN in the specified format.
+
+---
+
+### `usAddress` Function
+
+Generates a random U.S. address in the format 'StreetNumber StreetName, City, State ZIP Code'.
+- Returns a string, a random U.S. address in the specified format.
+
+---
+
+### `person` Function
+
+Generates a random person object with various properties.
+- `excludeProperties` (optional, array of strings): An optional array of property names to be excluded from the generated person object.
+- Returns an object, a randomly generated person object with properties such as 'id', 'phoneNumber', 'gender', 'name', 'ssn', 'email', and 'address'. Excludes properties if specified in `excludeProperties`.
+
+
 ## Usage
 
 Here's an example of how to use these functions:
@@ -94,6 +160,7 @@ const randomFullName = Randulate.name(0);        // Generate a random female ful
 const maleFirstNames = Randulate.firstNameObjectOrArray(1, true, 5); // Generate an array of 5 male first names
 const femaleLastNames = Randulate.lastNameObjectOrArray(false, 3);  // Generate an object of 3 female last names
 const randomNames = Randulate.nameObjectOrArray(1, true, 4);         // Generate an array of 4 random full names
+const person = Randulate.person(['email', 'address']);               // Generate an object of person and excludes 'email' and 'address' properties
 ```
 
 
