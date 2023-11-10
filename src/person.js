@@ -1,13 +1,18 @@
 const commonStreetNames = require('../lib/consts/commonStreetName');
+const crypto = require('crypto');
 const domains = require('../lib/consts/emailDomains');
 const femaleFirstNames = require('../lib/consts/femaleFirstName');
+const languages = require('../lib/consts/languages');
 const lastNames = require('../lib/consts/lastName');
 const maleFirstNames = require('../lib/consts/maleFirstName');
-const usCities  =require('../lib/consts/usCities');
+const maritalStatuses = require('../lib/consts/maritalStatus');
+const usCities = require('../lib/consts/usCities');
 const usStateAbbreviations = require('../lib/consts/usStateAbbreviation');
+const usUniversities = require('../lib/consts/usUniversities');
 const {
   generateObjectOrArray,
   generateUUID,
+  getRandomElement,
   giveMeRandomInt,
   giveMeThreeDigits
 } = require('./helper');
@@ -227,6 +232,95 @@ const person = (excludeProperties) => {
 };
 
 
+/**
+ * Selects and returns a random language.
+ *
+ * @returns {string} - A randomly selected language.
+ */
+const language = () => getRandomElement(languages);
+
+
+/**
+ * Selects and returns a random marital status.
+ *
+ * @returns {string} - A randomly selected marital status.
+ */
+const maritalStatus = () => getRandomElement(maritalStatuses);
+
+
+/**
+ * Selects and returns a random university.
+ *
+ * @returns {string} - A randomly selected US university.
+ */
+const universityAttended = () => getRandomElement(usUniversities);
+
+
+/**
+ * Generates a random password based on specified options.
+ *
+ * @param {number} [length = 12] - The length of the generated password.
+ * @param {Object} [options = {}] - Additional options for password generation.
+ * @param {boolean} [options.includeLowerCase = true] - Include lowercase letters in the password.
+ * @param {boolean} [options.includeUpperCase = true] - Include uppercase letters in the password.
+ * @param {boolean} [options.includeDigits = true] - Include digits in the password.
+ * @param {boolean} [options.includeSpecialChars = true] - Include special characters in the password.
+ * @param {Object} [options.lengthRange = { min: length, max: length }] - Range of acceptable password lengths.
+ *
+ * @throws {Error} - Throws an error if no character sets are selected for password generation.
+ *
+ * @returns {string} - The generated password based on the specified options.
+ */
+const password = (length = 12, options = {}) => {
+  let characters = '';
+  let password = '';
+  const {
+    includeLowerCase = true,
+    includeUpperCase = true,
+    includeDigits = true,
+    includeSpecialChars = true,
+    lengthRange = { min: length, max: length }
+  } = options;
+
+  const characterSets = {
+    lowercase: 'abcdefghijklmnopqrstuvwxyz',
+    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    digits: '0123456789',
+    specialChars: '!@#$%^&*()_+[]{}|;:,.<>?~'
+  };
+
+  if (includeLowerCase) {
+    characters += characterSets.lowercase;
+  }
+
+  if (includeUpperCase) {
+    characters += characterSets.uppercase;
+  }
+
+  if (includeDigits) {
+    characters += characterSets.digits;
+  }
+
+  if (includeSpecialChars) {
+    characters += characterSets.specialChars;
+  }
+
+  if (characters.length === 0) {
+    throw new Error('No character sets selected for password generation.');
+  }
+
+  const secureRandomBytes = crypto.randomBytes(lengthRange.max);
+  const passwordLength = secureRandomBytes.readUInt32BE(0) % (lengthRange.max - lengthRange.min + 1) + lengthRange.min;
+
+  for (let i = 0; i < passwordLength; i++) {
+    const randomIndex = secureRandomBytes.readUInt32BE(i % 4) % characters.length;
+    password += characters[randomIndex];
+  }
+
+  return password;
+};
+
+
 module.exports = {
   SSN,
   emailByName,
@@ -234,12 +328,16 @@ module.exports = {
   firstName,
   firstNameObjectOrArray,
   gender,
+  language,
   lastName,
   lastNameObjectOrArray,
+  maritalStatus,
   name,
   nameObjectOrArray,
+  password,
   person,
   randomEmail,
+  universityAttended,
   usAddress,
   usPhoneNumber
 };

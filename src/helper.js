@@ -71,9 +71,23 @@ const generateUUID = () => {
 }
 
 
+/**
+ * Returns a random element from the given array.
+ *
+ * @param {Array} array - The array from which to select a random element.
+ * @returns {*} - A random element from the input array.
+ */
+const getRandomElement = (array) => {
+  const randomInt = giveMeRandomInt(0, array.length - 1);
+
+  return array[randomInt];
+};
+
+
 module.exports = {
   generateObjectOrArray,
   generateUUID,
+  getRandomElement,
   giveMeRandomInt,
   giveMeThreeDigits
 }
