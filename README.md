@@ -13,6 +13,39 @@ npm install randulate
 yarn add randulate
 ```
 
+# Table of Contents
+
+- [Person](#person)
+  - [firstName(gender)](#firstnamegender)
+  - [lastName()](#lastname)
+  - [name(gender)](#namegender)
+  - [firstNameObjectOrArray(gender, isArray, size)](#firstnameobjectorarraygender-isarray-size)
+  - [lastNameObjectOrArray(isArray, size)](#lastnameobjectorarrayisarray-size)
+  - [nameObjectOrArray(gender, isArray, size)](#nameobjectorarraygender-isarray-size)
+  - [emailFromNames(firstName, lastName, nameOrder)](#emailfromnamesfirstname-lastname-nameorder)
+  - [randomEmail(gender)](#randomemailgender)
+  - [emailByName(name)](#emailbynamename)
+  - [gender()](#gender)
+  - [usPhoneNumber()](#usphonenumber)
+  - [SSN()](#ssn)
+  - [usAddress()](#usaddress)
+  - [person(excludeProperties)](#personexcludeproperties)
+  - [language()](#language)
+  - [maritalStatus()](#maritalstatus)
+  - [universityAttended()](#universityattended)
+  - [password(length, options)](#passwordlength-options)
+- [Boolean](#boolean)
+  - [randomBoolean()](#randomboolean)
+  - [randomBooleanWithProbability(trueProbability)](#randombooleanwithprobabilitytrueprobability)
+  - [randomBooleanArray(length)](#randombooleanarraylength)
+  - [randomBooleanSequence(length, trueProbability)](#randombooleansequencelength-trueprobability)
+  - [weightedRandomBoolean(trueWeight, falseWeight)](#weightedrandombooleantrueweight-falseweight)
+  - [randomBooleanWithCondition(length)](#randombooleanwithconditionlength)
+- [Usage](#usage)
+- [Feedback](#feedback)
+
+---
+
 # Person
 
 ### `firstName(gender)`
@@ -184,9 +217,9 @@ Returns a string, a randomly selected US university.
 
 ---
 
-### `password(length = 12, options = {})`
+### `password(length, options)`
 
-Generates a random password based on specified options.
+Generates a random password based on specified options. (Note the default values are length = 12 & options = {})
   - `length` (optional, default: 12) - The length of the generated password.
   - `options` (optional, default: {}) - Additional options for password generation.
     - `includeLowerCase` (optional, default: true) - Include lowercase letters in the password.
