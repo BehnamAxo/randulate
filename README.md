@@ -13,11 +13,7 @@ npm install randulate
 yarn add randulate
 ```
 
-## Random Name Generator
-
-This module provides functions to generate random first names, last names, and full names. You can use it to create arrays or objects of names based on the specified gender and size.
-
-## Functions
+# Person
 
 ### `firstName(gender)`
 
@@ -80,8 +76,9 @@ Generates an array or object of full names based on the specified gender and siz
 
 Returns an array of full names if `isArray` is `true`, or an object with key-value pairs if `isArray` is `false`.
 
+---
 
-### `emailFromNames` Function
+### `emailFromNames(firstName, lastName, nameOrder)`
 
 Creates an email address from the given first and last names.
 
@@ -91,59 +88,182 @@ Creates an email address from the given first and last names.
 - **Throws**: An error if either the first name or last name is missing, or if an invalid 'nameOrder' value is provided.
 Returns a string, the generated email address.
 
+Returns a string representing an email address.
+
 ---
 
-### `randomEmail` Function
+### `randomEmail(gender)`
 
 Generates a random email address based on optional gender-specific names.
 
 - `gender` (optional, string): An optional parameter representing the gender. Use 1 for male and 0 for female.
 - **Throws**: An error if an invalid gender value is provided.
+
 Returns a string, the generated random email address.
 
 ---
 
-### `emailByName` Function
+### `emailByName(name)`
 
 Generates an email address based on a name and a list of domains.
 - `name` (string): The name to create an email address from.
-- Returns a string, an email address in the format 'name@domain'.
+
+Returns a string, an email address in the format 'name@domain'.
 
 ---
 
-### `gender` Function
+### `gender()`
 
 Generates a random gender as either 'Female' or 'Male.
-- Returns a string, a randomly chosen gender, either 'Female' or 'Male'.
+
+Returns a string, a randomly chosen gender, either 'Female' or 'Male'.
 
 ---
 
-### `usPhoneNumber` Function
+### `usPhoneNumber()`
 
 Generates a random U.S. phone number in the format '(XXX) XXX-XXXX'.
-- Returns a string, a random U.S. phone number in the specified format.
+
+Returns a string, a random U.S. phone number in the specified format.
 
 ---
 
-### `SSN` Function
+### `SSN()`
 
 Generates a random Social Security Number (SSN) in the format 'XXX-XXX-XXX'.
-- Returns a string, a random SSN in the specified format.
+
+Returns a string, a random SSN in the specified format.
 
 ---
 
-### `usAddress` Function
+### `usAddress()`
 
 Generates a random U.S. address in the format 'StreetNumber StreetName, City, State ZIP Code'.
-- Returns a string, a random U.S. address in the specified format.
+
+Returns a string, a random U.S. address in the specified format.
 
 ---
 
-### `person` Function
+### `person(excludeProperties)`
 
 Generates a random person object with various properties.
 - `excludeProperties` (optional, array of strings): An optional array of property names to be excluded from the generated person object.
-- Returns an object, a randomly generated person object with properties such as 'id', 'phoneNumber', 'gender', 'name', 'ssn', 'email', and 'address'. Excludes properties if specified in `excludeProperties`.
+    - `id` (string): A version 4 UUID.
+    - `phoneNumber` (string): A randomly generated US phone number.
+    - `gender` (string): A randomly chosen gender, either 'Female' or 'Male'.
+    - `name` (string): A randomly generated name.
+    - `ssn` (string): A random Social Security Number.
+    - `email` (string): A randomly generated email based on the person's name.
+    - `address` (string): A randomly generated US address.
+
+Returns an object, a randomly generated person object with properties such as 'id', 'phoneNumber', 'gender', 'name', 'ssn', 'email', and 'address'. Excludes properties if specified in `excludeProperties`.
+
+---
+
+### `language()`
+
+Generates a random language.
+
+Returns a string representing a randomly selected language.
+
+---
+
+### `maritalStatus()`
+
+Generates a random marital status.
+
+Returns a string, a randomly selected marital status.
+
+---
+
+### `universityAttended()`
+
+Generates a random university.
+
+Returns a string, a randomly selected US university.
+
+---
+
+### `password(length = 12, options = {})`
+
+Generates a random password based on specified options.
+  - `length` (optional, default: 12) - The length of the generated password.
+  - `options` (optional, default: {}) - Additional options for password generation.
+    - `includeLowerCase` (optional, default: true) - Include lowercase letters in the password.
+    - `includeUpperCase` (optional, default: true) - Include uppercase letters in the password.
+    - `includeDigits` (optional, default: true) - Include digits in the password.
+    - `includeSpecialChars` (optional, default: true) - Include special characters in the password.
+    - `lengthRange` (optional, default: { min: length, max: length }) - Range of acceptable password lengths.
+
+- **Throws:** An error if no character sets are selected for password generation.
+
+Returns a string, the generated password based on the specified options.
+
+This function generates a password by selecting characters from different character sets, including lowercase letters, uppercase letters, digits, and special characters. The options allow customization of the password length and the inclusion of specific character sets. It utilizes the `crypto` module to generate secure random bytes for enhanced password security.
+
+
+# Boolean
+
+### `randomBoolean()`
+
+Generates a random boolean value with a 50% chance of being true or false.
+
+Returns a boolean, either `true` or `false`.
+
+---
+
+### `randomBooleanWithProbability(trueProbability)`
+
+Generates a random boolean value based on a specified probability of being true.
+  - `trueProbability` (number) - The probability of the result being true, a decimal between 0 and 1.
+
+Returns a boolean, either `true` or `false`.
+
+---
+
+### `randomBooleanArray(length)`
+
+Generates an array of random boolean values.
+
+  - `length` (number) - The length of the boolean array to generate.
+
+Returns an array of boolean values.
+
+---
+
+### `randomBooleanSequence(length, trueProbability)`
+
+Generates a sequence of random boolean values based on a specified probability of being true.
+
+  - `length` (number) - The length of the boolean sequence to generate.
+  - `trueProbability` (number) - The probability of each value being true, a decimal between 0 and 1.
+
+Returns an array of boolean values representing the generated sequence.
+
+---
+
+### `weightedRandomBoolean(trueWeight, falseWeight)`
+
+Generates a weighted random boolean value.
+
+  - `trueWeight` (number) - The weight assigned to the `true` value.
+  - `falseWeight` (number) - The weight assigned to the `false` value.
+
+Returns a boolean, either `true` or `false`, based on the specified weights.
+
+---
+
+### `randomBooleanWithCondition(length)`
+
+Generates an array of random boolean values with at least one true value.
+
+  - `length` (number) - The length of the boolean array to generate (minimum length is 1).
+
+Returns an array of boolean values.
+
+
+
+
 
 
 ## Usage
@@ -153,18 +273,37 @@ Here's an example of how to use these functions:
 ```javascript
 const Randulate = require('randulate');
 
-const randomFirstName = Randulate.firstName(1); // Generate a random male first name
-const randomLastName = Randulate.lastName();     // Generate a random last name
-const randomFullName = Randulate.name(0);        // Generate a random female full name
+const firstName = Randulate.firstName(1);
+const lastName = Randulate.lastName();
+const name = Randulate.name(0);
+const maleFirstNames = Randulate.firstNameObjectOrArray(1, true, 5);
+const femaleLastNames = Randulate.lastNameObjectOrArray(false, 3);
+const randomNames = Randulate.nameObjectOrArray(1, true, 4);
+const person = Randulate.person(['email', 'address']);
+const language = Randulate.language();
+const maritalStatus = Randulate.maritalStatus();
+const universityAttended = Randulate.universityAttended();
 
-const maleFirstNames = Randulate.firstNameObjectOrArray(1, true, 5); // Generate an array of 5 male first names
-const femaleLastNames = Randulate.lastNameObjectOrArray(false, 3);  // Generate an object of 3 female last names
-const randomNames = Randulate.nameObjectOrArray(1, true, 4);         // Generate an array of 4 random full names
-const person = Randulate.person(['email', 'address']);               // Generate an object of person and excludes 'email' and 'address' properties
+const options = {
+  includeLowerCase: false,
+  includeUpperCase: false,
+  includeDigits: true,
+  includeSpecialChars: false,
+  lengthRange: { min: 15, max: 18 }
+};
+const password = Randulate.password(16, options);
+
+const randomBoolean = Randulate.randomBoolean()
+const randomBooleanWithProbability = Randulate.randomBooleanWithProbability(0.2);
+const randomBooleanArray = Randulate.randomBooleanArray(10);
+const randomBooleanSequence = Randulate.randomBooleanSequence(5, 0.4);
+const randomBooleanWithCondition = Randulate.randomBooleanWithCondition(5);
+const weightedRandomBoolean = Randulate.weightedRandomBoolean(1, 3);
+
 ```
 
 
 ## Feedback
 
-I wholeheartedly welcome your feedback, suggestions, and bug reports. Your input is invaluable in improving and maintaining the quality of this code. If you come across any unusual behavior, discover a bug, or have ideas for enhancements, please don't hesitate to reach out. Feel free to open an issue on the repository, or simply drop a message. Enjoy generating random names with this module.
-Cheers!
+I wholeheartedly welcome your feedback, suggestions, and bug reports. If you come across any unusual behavior, discover a bug, or have ideas for enhancements, please don't hesitate to reach out. Feel free to open an issue on the repository, or simply drop a message.
+Cheers! 🍻
