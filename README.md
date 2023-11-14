@@ -13,11 +13,7 @@ npm install randulate
 yarn add randulate
 ```
 
-## Random Name Generator
-
-This module provides functions to generate random first names, last names, and full names. You can use it to create arrays or objects of names based on the specified gender and size.
-
-## Functions
+# Person
 
 ### `firstName(gender)`
 
@@ -206,6 +202,69 @@ Returns a string, the generated password based on the specified options.
 This function generates a password by selecting characters from different character sets, including lowercase letters, uppercase letters, digits, and special characters. The options allow customization of the password length and the inclusion of specific character sets. It utilizes the `crypto` module to generate secure random bytes for enhanced password security.
 
 
+# Boolean
+
+### `randomBoolean()`
+
+Generates a random boolean value with a 50% chance of being true or false.
+
+Returns a boolean, either `true` or `false`.
+
+---
+
+### `randomBooleanWithProbability(trueProbability)`
+
+Generates a random boolean value based on a specified probability of being true.
+  - `trueProbability` (number) - The probability of the result being true, a decimal between 0 and 1.
+
+Returns a boolean, either `true` or `false`.
+
+---
+
+### `randomBooleanArray(length)`
+
+Generates an array of random boolean values.
+
+  - `length` (number) - The length of the boolean array to generate.
+
+Returns an array of boolean values.
+
+---
+
+### `randomBooleanSequence(length, trueProbability)`
+
+Generates a sequence of random boolean values based on a specified probability of being true.
+
+  - `length` (number) - The length of the boolean sequence to generate.
+  - `trueProbability` (number) - The probability of each value being true, a decimal between 0 and 1.
+
+Returns an array of boolean values representing the generated sequence.
+
+---
+
+### `weightedRandomBoolean(trueWeight, falseWeight)`
+
+Generates a weighted random boolean value.
+
+  - `trueWeight` (number) - The weight assigned to the `true` value.
+  - `falseWeight` (number) - The weight assigned to the `false` value.
+
+Returns a boolean, either `true` or `false`, based on the specified weights.
+
+---
+
+### `randomBooleanWithCondition(length)`
+
+Generates an array of random boolean values with at least one true value.
+
+  - `length` (number) - The length of the boolean array to generate (minimum length is 1).
+
+Returns an array of boolean values.
+
+
+
+
+
 
 ## Usage
 
@@ -214,18 +273,37 @@ Here's an example of how to use these functions:
 ```javascript
 const Randulate = require('randulate');
 
-const randomFirstName = Randulate.firstName(1); // Generate a random male first name
-const randomLastName = Randulate.lastName();     // Generate a random last name
-const randomFullName = Randulate.name(0);        // Generate a random female full name
+const firstName = Randulate.firstName(1);
+const lastName = Randulate.lastName();
+const name = Randulate.name(0);
+const maleFirstNames = Randulate.firstNameObjectOrArray(1, true, 5);
+const femaleLastNames = Randulate.lastNameObjectOrArray(false, 3);
+const randomNames = Randulate.nameObjectOrArray(1, true, 4);
+const person = Randulate.person(['email', 'address']);
+const language = Randulate.language();
+const maritalStatus = Randulate.maritalStatus();
+const universityAttended = Randulate.universityAttended();
 
-const maleFirstNames = Randulate.firstNameObjectOrArray(1, true, 5); // Generate an array of 5 male first names
-const femaleLastNames = Randulate.lastNameObjectOrArray(false, 3);  // Generate an object of 3 female last names
-const randomNames = Randulate.nameObjectOrArray(1, true, 4);         // Generate an array of 4 random full names
-const person = Randulate.person(['email', 'address']);               // Generate an object of person and excludes 'email' and 'address' properties
+const options = {
+  includeLowerCase: false,
+  includeUpperCase: false,
+  includeDigits: true,
+  includeSpecialChars: false,
+  lengthRange: { min: 15, max: 18 }
+};
+const password = Randulate.password(16, options);
+
+const randomBoolean = Randulate.randomBoolean()
+const randomBooleanWithProbability = Randulate.randomBooleanWithProbability(0.2);
+const randomBooleanArray = Randulate.randomBooleanArray(10);
+const randomBooleanSequence = Randulate.randomBooleanSequence(5, 0.4);
+const randomBooleanWithCondition = Randulate.randomBooleanWithCondition(5);
+const weightedRandomBoolean = Randulate.weightedRandomBoolean(1, 3);
+
 ```
 
 
 ## Feedback
 
-I wholeheartedly welcome your feedback, suggestions, and bug reports. Your input is invaluable in improving and maintaining the quality of this code. If you come across any unusual behavior, discover a bug, or have ideas for enhancements, please don't hesitate to reach out. Feel free to open an issue on the repository, or simply drop a message. Enjoy generating random names with this module.
-Cheers!
+I wholeheartedly welcome your feedback, suggestions, and bug reports. If you come across any unusual behavior, discover a bug, or have ideas for enhancements, please don't hesitate to reach out. Feel free to open an issue on the repository, or simply drop a message.
+Cheers! 🍻
