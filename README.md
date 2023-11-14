@@ -80,8 +80,9 @@ Generates an array or object of full names based on the specified gender and siz
 
 Returns an array of full names if `isArray` is `true`, or an object with key-value pairs if `isArray` is `false`.
 
+---
 
-### `emailFromNames` Function
+### `emailFromNames(firstName, lastName, nameOrder)`
 
 Creates an email address from the given first and last names.
 
@@ -91,59 +92,119 @@ Creates an email address from the given first and last names.
 - **Throws**: An error if either the first name or last name is missing, or if an invalid 'nameOrder' value is provided.
 Returns a string, the generated email address.
 
+Returns a string representing an email address.
+
 ---
 
-### `randomEmail` Function
+### `randomEmail(gender)`
 
 Generates a random email address based on optional gender-specific names.
 
 - `gender` (optional, string): An optional parameter representing the gender. Use 1 for male and 0 for female.
 - **Throws**: An error if an invalid gender value is provided.
+
 Returns a string, the generated random email address.
 
 ---
 
-### `emailByName` Function
+### `emailByName(name)`
 
 Generates an email address based on a name and a list of domains.
 - `name` (string): The name to create an email address from.
-- Returns a string, an email address in the format 'name@domain'.
+
+Returns a string, an email address in the format 'name@domain'.
 
 ---
 
-### `gender` Function
+### `gender()`
 
 Generates a random gender as either 'Female' or 'Male.
-- Returns a string, a randomly chosen gender, either 'Female' or 'Male'.
+
+Returns a string, a randomly chosen gender, either 'Female' or 'Male'.
 
 ---
 
-### `usPhoneNumber` Function
+### `usPhoneNumber()`
 
 Generates a random U.S. phone number in the format '(XXX) XXX-XXXX'.
-- Returns a string, a random U.S. phone number in the specified format.
+
+Returns a string, a random U.S. phone number in the specified format.
 
 ---
 
-### `SSN` Function
+### `SSN()`
 
 Generates a random Social Security Number (SSN) in the format 'XXX-XXX-XXX'.
-- Returns a string, a random SSN in the specified format.
+
+Returns a string, a random SSN in the specified format.
 
 ---
 
-### `usAddress` Function
+### `usAddress()`
 
 Generates a random U.S. address in the format 'StreetNumber StreetName, City, State ZIP Code'.
-- Returns a string, a random U.S. address in the specified format.
+
+Returns a string, a random U.S. address in the specified format.
 
 ---
 
-### `person` Function
+### `person(excludeProperties)`
 
 Generates a random person object with various properties.
 - `excludeProperties` (optional, array of strings): An optional array of property names to be excluded from the generated person object.
-- Returns an object, a randomly generated person object with properties such as 'id', 'phoneNumber', 'gender', 'name', 'ssn', 'email', and 'address'. Excludes properties if specified in `excludeProperties`.
+    - `id` (string): A version 4 UUID.
+    - `phoneNumber` (string): A randomly generated US phone number.
+    - `gender` (string): A randomly chosen gender, either 'Female' or 'Male'.
+    - `name` (string): A randomly generated name.
+    - `ssn` (string): A random Social Security Number.
+    - `email` (string): A randomly generated email based on the person's name.
+    - `address` (string): A randomly generated US address.
+
+Returns an object, a randomly generated person object with properties such as 'id', 'phoneNumber', 'gender', 'name', 'ssn', 'email', and 'address'. Excludes properties if specified in `excludeProperties`.
+
+---
+
+### `language()`
+
+Generates a random language.
+
+Returns a string representing a randomly selected language.
+
+---
+
+### `maritalStatus()`
+
+Generates a random marital status.
+
+Returns a string, a randomly selected marital status.
+
+---
+
+### `universityAttended()`
+
+Generates a random university.
+
+Returns a string, a randomly selected US university.
+
+---
+
+### `password(length = 12, options = {})`
+
+Generates a random password based on specified options.
+  - `length` (optional, default: 12) - The length of the generated password.
+  - `options` (optional, default: {}) - Additional options for password generation.
+    - `includeLowerCase` (optional, default: true) - Include lowercase letters in the password.
+    - `includeUpperCase` (optional, default: true) - Include uppercase letters in the password.
+    - `includeDigits` (optional, default: true) - Include digits in the password.
+    - `includeSpecialChars` (optional, default: true) - Include special characters in the password.
+    - `lengthRange` (optional, default: { min: length, max: length }) - Range of acceptable password lengths.
+
+- **Throws:** An error if no character sets are selected for password generation.
+
+Returns a string, the generated password based on the specified options.
+
+This function generates a password by selecting characters from different character sets, including lowercase letters, uppercase letters, digits, and special characters. The options allow customization of the password length and the inclusion of specific character sets. It utilizes the `crypto` module to generate secure random bytes for enhanced password security.
+
 
 
 ## Usage
