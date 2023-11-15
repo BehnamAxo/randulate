@@ -42,11 +42,15 @@ yarn add randulate
   - [randomBooleanSequence(length, trueProbability)](#randombooleansequencelength-trueprobability)
   - [weightedRandomBoolean(trueWeight, falseWeight)](#weightedrandombooleantrueweight-falseweight)
   - [randomBooleanWithCondition(length)](#randombooleanwithconditionlength)
-- [Datetime](#)
+- [Datetime](#datetime)
   - [getRandomDate(startDate, endDate)](#getrandomdatestartdate-enddate)
   - [getRandomTime()](#getrandomtime)
   - [dateDifference(date1, date2)](#datedifferencedate1-date2)
   - [countdownTimer(futureDate)](#countdowntimerfuturedate)
+- [Color](#color)
+  - [getHexColor()](#gethexcolor)
+  - [getColorName()](#getcolorname)
+  - [interpolateColor(color1, color2, percentage)](#interpolatecolorcolor1-color2-percentage)
 - [Feedback](#feedback)
 
 ---
@@ -544,9 +548,11 @@ Calculates and returns a human-readable countdown timer string representing the 
 Returns a string representing the time remaining in days, hours, minutes, and seconds.
 **Example:**
 ```javascript
+const Randulate = require('randulate');
+
 // Set a future date (e.g., December 31, 2024, 23:59:59)
 const futureDate = new Date('2023-12-31T23:59:59');
-countdownTimer(futureDate);
+const remainingTime = Randulate.countdownTimer(futureDate);
 ```
 
 ---
@@ -555,7 +561,7 @@ countdownTimer(futureDate);
 
 Calculates and returns various details about the age based on the provided date of birth.
 
-- `dateOfBirth` (`string`): The date of birth in either "YYYY-MM-DD" or "MM-DD-YYYY" format.
+- `dateOfBirth` (`string`): The date of birth in either 'YYYY-MM-DD' or 'MM-DD-YYYY' format.
 
 - **Throws**: an `Error` if the provided date of birth is invalid or in an unsupported format.
 
@@ -563,13 +569,66 @@ Returns an object containing details about the age, including minutes, seconds, 
 
 **Example:**
 ```javascript
-const customDateOfBirth1 = "1990-01-12";
-const customDateOfBirth2 = "01-12-1990";
-getAgeDetails(customDateOfBirth1); // Example with "YYYY-MM-DD" format
-getAgeDetails(customDateOfBirth2); // Example with "MM-DD-YYYY" format
+const Randulate = require('randulate');
+
+const customDateOfBirth1 = '1990-01-12';
+const customDateOfBirth2 = '01-12-1990';
+const ageDetails1 = Randulate.getAgeDetails(customDateOfBirth1); // Example with 'YYYY-MM-DD' format
+const ageDetails2 = Randulate.getAgeDetails(customDateOfBirth2); // Example with 'MM-DD-YYYY' format
 ```
 
-## Feedback
+# Color
+
+### `getHexColor()`
+
+Generates a random hexadecimal color code.
+
+Returns a randomly generated hexadecimal color code (e.g., '#RRGGBB').
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const hexColorName = Randulate.getHexColor();
+```
+
+---
+
+### `getColorName()`
+
+Generates a random color name from a predefined list.
+
+Returns a randomly selected color name from the list.
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const colorName = getColorName();
+```
+
+---
+
+### `interpolateColor(color1, color2, percentage)`
+
+Interpolates between two hexadecimal colors based on a given percentage.
+
+- `color1` (`string`): The first hexadecimal color code (e.g., '#RRGGBB').
+- `color2` (`string`): The second hexadecimal color code (e.g., '#RRGGBB').
+- `percentage` (`number`): The interpolation percentage, a value between 0 and 100 where 0 represents the first color,
+100 represents the second color, and values in between represent a blend of the two colors.
+
+Returns the interpolated hexadecimal color code.
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+
+const color1 = '#FF0000';
+const color2 = '#00FF00';
+const interpolatedColor = Randulate.interpolateColor(color1, color2, 50);
+```
+
+
+# Feedback
 
 I wholeheartedly welcome your feedback, suggestions, and bug reports. If you come across any unusual behavior, discover a bug, or have ideas for enhancements, please don't hesitate to reach out. Feel free to open an issue on the repository, or simply drop a message.
 Cheers! 🍻

@@ -132,6 +132,48 @@ function calculateAgeInMilliseconds(dateOfBirth) {
 }
 
 
+/**
+ * Converts a hexadecimal color code to its RGB representation.
+ *
+ * @param {string} hex - The input hexadecimal color code (e.g., '#RRGGBB').
+ * @returns {number[]} An array representing the RGB values in the range of 0 to 255, with the format [red, green, blue].
+ */
+const hexToRgb = (hex) => {
+  const bigint = parseInt(hex.slice(1), 16);
+  return [ (bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255 ];
+};
+
+
+/**
+ * Converts an RGB color representation to its hexadecimal color code.
+ *
+ * @param {number[]} rgb - An array representing the RGB values in the range of 0 to 255, with the format [red, green, blue].
+ *
+ * @returns {string} The hexadecimal color code (e.g., '#RRGGBB').
+ */
+const rgbToHex = (rgb) => '#' + ((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1);
+
+
+/**
+ * Interpolates between two colors based on a given ratio.
+ *
+ * @param {number[]} c1 - An array representing the first color's RGB values in the range of 0 to 255.
+ * @param {number[]} c2 - An array representing the second color's RGB values in the range of 0 to 255.
+ * @param {number} ratio - The interpolation ratio, a value between 0 and 1 where 0 represents the first color,
+ * 1 represents the second color, and values in between represent a blend of the two colors.
+ *
+ * @returns {number[]} An array representing the interpolated RGB values.
+ */
+const interpolate = (c1, c2, ratio) => {
+  const result = [];
+  for (let i = 0; i < 3; i++) {
+      result[i] = Math.round(c1[i] + (c2[i] - c1[i]) * ratio);
+  }
+
+  return result;
+};
+
+
 module.exports = {
   calculateAgeInMilliseconds,
   generateObjectOrArray,
@@ -139,6 +181,8 @@ module.exports = {
   generateUUID,
   getRandomElement,
   getTimeUnits,
-  giveMeRandomInt
-  // giveMeThreeDigits
+  giveMeRandomInt,
+  hexToRgb,
+  interpolate,
+  rgbToHex
 }
