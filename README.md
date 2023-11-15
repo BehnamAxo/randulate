@@ -28,7 +28,7 @@ yarn add randulate
   - [emailByName(name)](#emailbynamename)
   - [gender()](#gender)
   - [usPhoneNumber()](#usphonenumber)
-  - [SSN()](#ssn)
+  - [ssn()](#ssn)
   - [usAddress()](#usaddress)
   - [person(excludeProperties)](#personexcludeproperties)
   - [language()](#language)
@@ -47,8 +47,6 @@ yarn add randulate
   - [getRandomTime()](#getrandomtime)
   - [dateDifference(date1, date2)](#datedifferencedate1-date2)
   - [countdownTimer(futureDate)](#countdowntimerfuturedate)
-  - [getAgeDetails(dateOfBirth)](#getagedetailsdateofbirth)
-- [Usage](#usage)
 - [Feedback](#feedback)
 
 ---
@@ -65,7 +63,10 @@ Returns a number representing a random age within the specified range.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const randomAge = Randulate.age();
+const age = Randulate.age(21, 44);
+
 ```
 
 ---
@@ -80,7 +81,9 @@ Returns a string representing a random first name.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const femaleFirstName = Randulate.firstName(0);
+const maleFirstName = Randulate.firstName(1);
 ```
 
 ---
@@ -93,7 +96,8 @@ Returns a string representing a random last name.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const lastName = Randulate.lastName();
 ```
 
 ---
@@ -108,7 +112,9 @@ Returns a string representing a random full name.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const femaleName = Randulate.name(0);
+const maleName = Randulate.name(1);
 ```
 
 ---
@@ -125,7 +131,10 @@ Returns an array of first names if `isArray` is `true`, or an object with key-va
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const femaleFirstNames = Randulate.firstNameObjectOrArray(0, true, 10);
+const maleFirstNames = Randulate.firstNameObjectOrArray(1, false, 5);
+
 ```
 
 ---
@@ -141,7 +150,9 @@ Returns an array of last names if `isArray` is `true`, or an object with key-val
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const lastNamesObject = Randulate.lastNameObjectOrArray(false, 4);
+const lastNamesArray = Randulate.lastNameObjectOrArray(true, 10);
 ```
 
 ---
@@ -158,7 +169,9 @@ Returns an array of full names if `isArray` is `true`, or an object with key-val
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const femaleRandomNamesArray = Randulate.nameObjectOrArray(0, true, 4);
+const maleRandomNamesObject = Randulate.nameObjectOrArray(1, false, 4);
 ```
 
 ---
@@ -176,7 +189,10 @@ Returns a string representing an email address.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const email1 = Randulate.emailFromNames('Behnam', 'Amiri', 'l');
+const email2 = Randulate.emailFromNames('Kelly', 'Smith', 'f');
+const email3 = Randulate.emailFromNames('Julie', 'Gonzales');
 ```
 
 ---
@@ -192,7 +208,9 @@ Returns a string, the generated random email address.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const randomFemaleEmail = Randulate.randomEmail(0);
+const randomMaleEmail = Randulate.randomEmail(1);
 ```
 
 ---
@@ -206,7 +224,8 @@ Returns a string, an email address in the format 'name@domain'.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const email = Randulate.emailByName('Behnam Amiri');
 ```
 
 ---
@@ -219,7 +238,9 @@ Returns a string, a randomly chosen gender, either 'Female' or 'Male'.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const gender = Randulate.gender();
+
 ```
 
 ---
@@ -232,20 +253,22 @@ Returns a string, a random U.S. phone number in the specified format.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const phoneNumber = Randulate.usPhoneNumber();
 ```
 
 ---
 
-### `SSN()`
+### `ssn()`
 
-Generates a random Social Security Number (SSN) in the format 'XXX-XXX-XXX'.
+Generates a random Social Security Number (SSN) in the format `AAA-GG-SSSS`.
 
 Returns a string, a random SSN in the specified format.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const ssn = Randulate.ssn();
 ```
 
 ---
@@ -258,7 +281,8 @@ Returns a string, a random U.S. address in the specified format.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const usAddress = Randulate.usAddress();
 ```
 
 ---
@@ -279,7 +303,8 @@ Returns an object, a randomly generated person object with properties such as 'i
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const person = Randulate.person(['email', 'address']);
 ```
 
 ---
@@ -292,7 +317,8 @@ Returns a string representing a randomly selected language.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const language = Randulate.language();
 ```
 
 ---
@@ -305,7 +331,8 @@ Returns a string, a randomly selected marital status.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const maritalStatus = Randulate.maritalStatus();
 ```
 
 ---
@@ -318,7 +345,8 @@ Returns a string, a randomly selected US university.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const universityAttended = Randulate.universityAttended();
 ```
 
 ---
@@ -340,10 +368,18 @@ Returns a string, the generated password based on the specified options.
 
 This function generates a password by selecting characters from different character sets, including lowercase letters, uppercase letters, digits, and special characters. The options allow customization of the password length and the inclusion of specific character sets. It utilizes the `crypto` module to generate secure random bytes for enhanced password security.
 
-
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const options = {
+  includeLowerCase: true,
+  includeUpperCase: false,
+  includeDigits: true,
+  includeSpecialChars: false,
+  lengthRange: { min: 15, max: 18 }
+};
+const password = Randulate.password(16, options);
+
 ```
 
 # Boolean
@@ -356,7 +392,8 @@ Returns a boolean, either `true` or `false`.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const randomBoolean = Randulate.randomBoolean();
 ```
 
 ---
@@ -370,7 +407,8 @@ Returns a boolean, either `true` or `false`.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const randomBooleanWithProbability = Randulate.randomBooleanWithProbability(0.2);
 ```
 
 ---
@@ -385,7 +423,8 @@ Returns an array of boolean values.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const randomBooleanArray = Randulate.randomBooleanArray(10);
 ```
 
 ---
@@ -401,7 +440,8 @@ Returns an array of boolean values representing the generated sequence.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const randomBooleanSequence = Randulate.randomBooleanSequence(5, 0.4);
 ```
 
 ---
@@ -417,7 +457,8 @@ Returns a boolean, either `true` or `false`, based on the specified weights.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const weightedRandomBoolean = Randulate.weightedRandomBoolean(1, 3);
 ```
 
 ---
@@ -432,7 +473,8 @@ Returns an array of boolean values.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const randomBooleanWithCondition = Randulate.randomBooleanWithCondition(5);
 ```
 
 
@@ -449,7 +491,11 @@ Returns a randomly generated date within the specified range.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+
+const startDate = new Date('2023-01-01');
+const endDate = new Date('2023-12-31');
+const randomDate = Randulate.getRandomDate(startDate, endDate);
 ```
 
 ---
@@ -462,7 +508,8 @@ Returns a string representing a random time in the format `hh:mm:ss`.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+const randomTime = Randulate.getRandomTime();
 ```
 
 ---
@@ -479,7 +526,11 @@ Returns a string representing the time difference between the two dates.
 
 **Example:**
 ```javascript
-TODO
+const Randulate = require('randulate');
+
+const startDate = new Date('2023-01-01');
+const endDate = new Date('2023-12-31');
+const dateDifference = Randulate.dateDifference(startDate, endDate);
 ```
 
 ---
@@ -517,44 +568,6 @@ const customDateOfBirth2 = "01-12-1990";
 getAgeDetails(customDateOfBirth1); // Example with "YYYY-MM-DD" format
 getAgeDetails(customDateOfBirth2); // Example with "MM-DD-YYYY" format
 ```
-
-
-## Usage
-
-Here's an example of how to use these functions:
-
-```javascript
-const Randulate = require('randulate');
-
-const firstName = Randulate.firstName(1);
-const lastName = Randulate.lastName();
-const name = Randulate.name(0);
-const maleFirstNames = Randulate.firstNameObjectOrArray(1, true, 5);
-const femaleLastNames = Randulate.lastNameObjectOrArray(false, 3);
-const randomNames = Randulate.nameObjectOrArray(1, true, 4);
-const person = Randulate.person(['email', 'address']);
-const language = Randulate.language();
-const maritalStatus = Randulate.maritalStatus();
-const universityAttended = Randulate.universityAttended();
-
-const options = {
-  includeLowerCase: false,
-  includeUpperCase: false,
-  includeDigits: true,
-  includeSpecialChars: false,
-  lengthRange: { min: 15, max: 18 }
-};
-const password = Randulate.password(16, options);
-
-const randomBoolean = Randulate.randomBoolean()
-const randomBooleanWithProbability = Randulate.randomBooleanWithProbability(0.2);
-const randomBooleanArray = Randulate.randomBooleanArray(10);
-const randomBooleanSequence = Randulate.randomBooleanSequence(5, 0.4);
-const randomBooleanWithCondition = Randulate.randomBooleanWithCondition(5);
-const weightedRandomBoolean = Randulate.weightedRandomBoolean(1, 3);
-
-```
-
 
 ## Feedback
 

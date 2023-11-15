@@ -11,14 +11,18 @@ const giveMeRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)
 
 
 /**
- * Generates a random 3-digit number as a string with leading zeros if necessary.
+ * Generates a random number with a specified number of digits.
  *
- * @returns {string} A random 3-digit number in the format 'XXX'.
+ * @param {number} numDigits - The number of digits for the generated random number.
+ * @returns {string} A string representing a random number with the specified number of digits.
  */
-const giveMeThreeDigits = () => {
-  const randomNumber = Math.floor(Math.random() * (999 - 100 + 1) + 100);
-  return String(randomNumber).padStart(3, '0');
-}
+const generateRandomNumber = (numDigits) => {
+  const min = 10 ** (numDigits - 1);
+  const max = (10 ** numDigits) - 1;
+  const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+
+  return String(randomNumber).padStart(numDigits, '0');
+};
 
 
 /**
@@ -131,9 +135,10 @@ function calculateAgeInMilliseconds(dateOfBirth) {
 module.exports = {
   calculateAgeInMilliseconds,
   generateObjectOrArray,
+  generateRandomNumber,
   generateUUID,
   getRandomElement,
   getTimeUnits,
-  giveMeRandomInt,
-  giveMeThreeDigits
+  giveMeRandomInt
+  // giveMeThreeDigits
 }

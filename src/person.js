@@ -11,10 +11,10 @@ const usStateAbbreviations = require('../lib/consts/usStateAbbreviation');
 const usUniversities = require('../lib/consts/usUniversities');
 const {
   generateObjectOrArray,
+  generateRandomNumber,
   generateUUID,
   getRandomElement,
-  giveMeRandomInt,
-  giveMeThreeDigits
+  giveMeRandomInt
 } = require('./helper');
 
 
@@ -131,7 +131,7 @@ const emailFromNames = (firstName, lastName, nameOrder = 'f') => {
 /**
  * Generates a random email address based on optional gender-specific names.
  *
- * @param {string} [gender] - An optional parameter representing the gender. Use 1 for male and 0 for female.
+ * @param {number} [gender] - An optional parameter representing the gender. Use 1 for male and 0 for female.
  *
  * @throws {Error} Throws an error if an invalid gender value is provided.
  *
@@ -187,11 +187,11 @@ const usPhoneNumber = () => {
 
 
 /**
- * Generates a random Social Security Number (SSN) in the format 'XXX-XXX-XXX'.
+ * Generates a random Social Security Number (SSN) in the format 'AAA-GG-SSSS'.
  *
  * @returns {string} A random SSN in the specified format.
  */
-const SSN = () => `${giveMeThreeDigits()}-${giveMeThreeDigits()}-${giveMeThreeDigits()}`;
+const ssn = () => `${generateRandomNumber(3)}-${generateRandomNumber(2)}-${generateRandomNumber(4)}`;
 
 
 /**
@@ -232,7 +232,7 @@ const person = (excludeProperties) => {
     phoneNumber: usPhoneNumber(),
     gender: gender(),
     name: personName,
-    ssn: SSN(),
+    ssn: ssn(),
     email: emailByName(personName),
     address: usAddress()
   };
@@ -334,7 +334,6 @@ const password = (length = 12, options = {}) => {
 
 
 module.exports = {
-  SSN,
   age,
   emailByName,
   emailFromNames,
@@ -350,6 +349,7 @@ module.exports = {
   password,
   person,
   randomEmail,
+  ssn,
   universityAttended,
   usAddress,
   usPhoneNumber

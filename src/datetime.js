@@ -42,6 +42,11 @@ const getRandomTime = () => {
 /**
  * Calculates the difference between two dates and returns a human-readable string representation in terms of years, months, days, hours, minutes, and seconds.
  *
+ * e.g:
+ * const startDate = new Date('2023-01-01');
+ * const endDate = new Date('2023-12-31');
+ * const dateDifference = Randulate.dateDifference(startDate, endDate);
+ *
  * @param {Date} date1 - The first date.
  * @param {Date} date2 - The second date.
  * @returns {string} A human-readable string representing the time difference between the two dates.
