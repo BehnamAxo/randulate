@@ -18,6 +18,18 @@ const {
 } = require('./helper');
 
 
+
+/**
+ * Generates a random integer within the specified age range.
+ *
+ * @param {number} [minAge=1] - An optional minimum age in the range (inclusive). Defaults to 1 if not provided.
+ * @param {number} [maxAge=120] - An optional maximum age in the range (inclusive). Defaults to 120 if not provided.
+ *
+ * @returns {number} A random integer representing an age within the specified range.
+ */
+const age = (minAge = 1, maxAge = 120) => giveMeRandomInt(minAge, maxAge);
+
+
 /**
  * @param {number} gender - The gender value. Use 1 for male and 0 for female. (optional)
  *
@@ -323,6 +335,7 @@ const password = (length = 12, options = {}) => {
 
 module.exports = {
   SSN,
+  age,
   emailByName,
   emailFromNames,
   firstName,

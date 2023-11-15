@@ -11,12 +11,21 @@
     "url": ""
   },
   "keywords": [
-    "mock",
-    "random",
     "data",
+    "dummy",
+    "fabrication",
+    "fake data",
+    "fake",
+    "fake-data",
+    "fake-data-generator",
     "generation",
+    "mimic",
+    "mock",
+    "model",
+    "random",
+    "replicate",
     "simulate",
-    "fabrication"
+    "synthetic"
   ],
   "author": "Behnam Amiri",
   "license": "ISC",

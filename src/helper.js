@@ -84,10 +84,56 @@ const getRandomElement = (array) => {
 };
 
 
+/**
+ * Returns an array of time units, each represented as an object with a label and the corresponding duration in milliseconds.
+ *
+ * @returns {Array} An array of time units.
+ */
+const getTimeUnits = () => {
+  return [
+    // 365.25 days per year - 24 hours per day - 60 minutes per hour - 60 seconds per minute -1000 milliseconds per second
+    { label: 'year', ms: 365.25 * 24 * 60 * 60 * 1000 },
+    { label: 'month', ms: 30.44 * 24 * 60 * 60 * 1000 },
+    { label: 'day', ms: 24 * 60 * 60 * 1000 },
+    { label: 'hour', ms: 60 * 60 * 1000 },
+    { label: 'minute', ms: 60 * 1000 },
+    { label: 'second', ms: 1000 },
+  ];
+}
+
+
+/**
+ * Calculates the age difference in milliseconds between the current date and the provided date of birth.
+ *
+ * @param {string} dateOfBirth - The date of birth in either 'YYYY-MM-DD' or 'MM-DD-YYYY' format.
+ * @returns {number} The age difference in milliseconds.
+ *
+ * @example
+ * // Example: Pass a date of birth in either 'YYYY-MM-DD' or 'MM-DD-YYYY' format
+ * const customDateOfBirth1 = '1990-01-12';
+ * const customDateOfBirth2 = '01-12-1990';
+ * calculateAgeInMilliseconds(customDateOfBirth1); // Example with 'YYYY-MM-DD' format
+ * calculateAgeInMilliseconds(customDateOfBirth2); // Example with 'MM-DD-YYYY' format
+ */
+function calculateAgeInMilliseconds(dateOfBirth) {
+  let dob = new Date(dateOfBirth);
+  if (isNaN(dob.getTime())) {
+    const parts = dateOfBirth.split('-');
+    dob = new Date(parts[2], parts[0] - 1, parts[1]);
+  }
+  const currentDate = new Date();
+  const timeDifference = currentDate - dob;
+
+  return timeDifference;
+}
+
+
 module.exports = {
+  calculateAgeInMilliseconds,
   generateObjectOrArray,
   generateUUID,
   getRandomElement,
+  getTimeUnits,
   giveMeRandomInt,
   giveMeThreeDigits
 }

@@ -16,6 +16,7 @@ yarn add randulate
 # Table of Contents
 
 - [Person](#person)
+  - [age(minAge, maxAge)](#ageminage-maxage)
   - [firstName(gender)](#firstnamegender)
   - [lastName()](#lastname)
   - [name(gender)](#namegender)
@@ -47,6 +48,16 @@ yarn add randulate
 ---
 
 # Person
+
+### `age(minAge, maxAge)`
+Generates a random integer representing an age within the specified range.
+
+- `minAge` (optional): An optional minimum age in the range (inclusive). Defaults to 1 if not provided.
+- `maxAge` (optional): An optional maximum age in the range (inclusive). Defaults to 120 if not provided.
+
+Returns a number representing a random age within the specified range.
+
+---
 
 ### `firstName(gender)`
 
