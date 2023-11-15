@@ -11,14 +11,18 @@ const giveMeRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)
 
 
 /**
- * Generates a random 3-digit number as a string with leading zeros if necessary.
+ * Generates a random number with a specified number of digits.
  *
- * @returns {string} A random 3-digit number in the format 'XXX'.
+ * @param {number} numDigits - The number of digits for the generated random number.
+ * @returns {string} A string representing a random number with the specified number of digits.
  */
-const giveMeThreeDigits = () => {
-  const randomNumber = Math.floor(Math.random() * (999 - 100 + 1) + 100);
-  return String(randomNumber).padStart(3, '0');
-}
+const generateRandomNumber = (numDigits) => {
+  const min = 10 ** (numDigits - 1);
+  const max = (10 ** numDigits) - 1;
+  const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+
+  return String(randomNumber).padStart(numDigits, '0');
+};
 
 
 /**
@@ -84,10 +88,101 @@ const getRandomElement = (array) => {
 };
 
 
+/**
+ * Returns an array of time units, each represented as an object with a label and the corresponding duration in milliseconds.
+ *
+ * @returns {Array} An array of time units.
+ */
+const getTimeUnits = () => {
+  return [
+    // 365.25 days per year - 24 hours per day - 60 minutes per hour - 60 seconds per minute -1000 milliseconds per second
+    { label: 'year', ms: 365.25 * 24 * 60 * 60 * 1000 },
+    { label: 'month', ms: 30.44 * 24 * 60 * 60 * 1000 },
+    { label: 'day', ms: 24 * 60 * 60 * 1000 },
+    { label: 'hour', ms: 60 * 60 * 1000 },
+    { label: 'minute', ms: 60 * 1000 },
+    { label: 'second', ms: 1000 },
+  ];
+}
+
+
+/**
+ * Calculates the age difference in milliseconds between the current date and the provided date of birth.
+ *
+ * @param {string} dateOfBirth - The date of birth in either 'YYYY-MM-DD' or 'MM-DD-YYYY' format.
+ * @returns {number} The age difference in milliseconds.
+ *
+ * @example
+ * // Example: Pass a date of birth in either 'YYYY-MM-DD' or 'MM-DD-YYYY' format
+ * const customDateOfBirth1 = '1990-01-12';
+ * const customDateOfBirth2 = '01-12-1990';
+ * calculateAgeInMilliseconds(customDateOfBirth1); // Example with 'YYYY-MM-DD' format
+ * calculateAgeInMilliseconds(customDateOfBirth2); // Example with 'MM-DD-YYYY' format
+ */
+function calculateAgeInMilliseconds(dateOfBirth) {
+  let dob = new Date(dateOfBirth);
+  if (isNaN(dob.getTime())) {
+    const parts = dateOfBirth.split('-');
+    dob = new Date(parts[2], parts[0] - 1, parts[1]);
+  }
+  const currentDate = new Date();
+  const timeDifference = currentDate - dob;
+
+  return timeDifference;
+}
+
+
+/**
+ * Converts a hexadecimal color code to its RGB representation.
+ *
+ * @param {string} hex - The input hexadecimal color code (e.g., '#RRGGBB').
+ * @returns {number[]} An array representing the RGB values in the range of 0 to 255, with the format [red, green, blue].
+ */
+const hexToRgb = (hex) => {
+  const bigint = parseInt(hex.slice(1), 16);
+  return [ (bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255 ];
+};
+
+
+/**
+ * Converts an RGB color representation to its hexadecimal color code.
+ *
+ * @param {number[]} rgb - An array representing the RGB values in the range of 0 to 255, with the format [red, green, blue].
+ *
+ * @returns {string} The hexadecimal color code (e.g., '#RRGGBB').
+ */
+const rgbToHex = (rgb) => '#' + ((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1);
+
+
+/**
+ * Interpolates between two colors based on a given ratio.
+ *
+ * @param {number[]} c1 - An array representing the first color's RGB values in the range of 0 to 255.
+ * @param {number[]} c2 - An array representing the second color's RGB values in the range of 0 to 255.
+ * @param {number} ratio - The interpolation ratio, a value between 0 and 1 where 0 represents the first color,
+ * 1 represents the second color, and values in between represent a blend of the two colors.
+ *
+ * @returns {number[]} An array representing the interpolated RGB values.
+ */
+const interpolate = (c1, c2, ratio) => {
+  const result = [];
+  for (let i = 0; i < 3; i++) {
+      result[i] = Math.round(c1[i] + (c2[i] - c1[i]) * ratio);
+  }
+
+  return result;
+};
+
+
 module.exports = {
+  calculateAgeInMilliseconds,
   generateObjectOrArray,
+  generateRandomNumber,
   generateUUID,
   getRandomElement,
+  getTimeUnits,
   giveMeRandomInt,
-  giveMeThreeDigits
+  hexToRgb,
+  interpolate,
+  rgbToHex
 }
