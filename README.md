@@ -42,6 +42,12 @@ yarn add randulate
   - [randomBooleanSequence(length, trueProbability)](#randombooleansequencelength-trueprobability)
   - [weightedRandomBoolean(trueWeight, falseWeight)](#weightedrandombooleantrueweight-falseweight)
   - [randomBooleanWithCondition(length)](#randombooleanwithconditionlength)
+- [Datetime](#)
+  - [getRandomDate(startDate, endDate)](#getrandomdatestartdate-enddate)
+  - [getRandomTime()](#getrandomtime)
+  - [dateDifference(date1, date2)](#datedifferencedate1-date2)
+  - [countdownTimer(futureDate)](#countdowntimerfuturedate)
+  - [getAgeDetails(dateOfBirth)](#getagedetailsdateofbirth)
 - [Usage](#usage)
 - [Feedback](#feedback)
 
@@ -57,6 +63,11 @@ Generates a random integer representing an age within the specified range.
 
 Returns a number representing a random age within the specified range.
 
+**Example:**
+```javascript
+TODO
+```
+
 ---
 
 ### `firstName(gender)`
@@ -67,6 +78,11 @@ Generates a random first name.
 
 Returns a string representing a random first name.
 
+**Example:**
+```javascript
+TODO
+```
+
 ---
 
 ### `lastName()`
@@ -74,6 +90,11 @@ Returns a string representing a random first name.
 Generates a random last name.
 
 Returns a string representing a random last name.
+
+**Example:**
+```javascript
+TODO
+```
 
 ---
 
@@ -84,6 +105,11 @@ Generates a random full name by combining a first name and a last name.
 - `gender` (optional): The gender value. Use `1` for male and `0` for female.
 
 Returns a string representing a random full name.
+
+**Example:**
+```javascript
+TODO
+```
 
 ---
 
@@ -97,6 +123,11 @@ Generates an array or object of first names based on the specified gender and si
 
 Returns an array of first names if `isArray` is `true`, or an object with key-value pairs if `isArray` is `false`.
 
+**Example:**
+```javascript
+TODO
+```
+
 ---
 
 ### `lastNameObjectOrArray(isArray, size)`
@@ -107,6 +138,11 @@ Generates an array or object of last names.
 - `size`: The number of last names to generate.
 
 Returns an array of last names if `isArray` is `true`, or an object with key-value pairs if `isArray` is `false`.
+
+**Example:**
+```javascript
+TODO
+```
 
 ---
 
@@ -120,6 +156,11 @@ Generates an array or object of full names based on the specified gender and siz
 
 Returns an array of full names if `isArray` is `true`, or an object with key-value pairs if `isArray` is `false`.
 
+**Example:**
+```javascript
+TODO
+```
+
 ---
 
 ### `emailFromNames(firstName, lastName, nameOrder)`
@@ -130,9 +171,13 @@ Creates an email address from the given first and last names.
 - `lastName` (string): The last name.
 - `nameOrder` (optional, string): The order in which the first and last names should be used ('f' for firstName first or 'l' for lastName first).
 - **Throws**: An error if either the first name or last name is missing, or if an invalid 'nameOrder' value is provided.
-Returns a string, the generated email address.
 
 Returns a string representing an email address.
+
+**Example:**
+```javascript
+TODO
+```
 
 ---
 
@@ -145,6 +190,11 @@ Generates a random email address based on optional gender-specific names.
 
 Returns a string, the generated random email address.
 
+**Example:**
+```javascript
+TODO
+```
+
 ---
 
 ### `emailByName(name)`
@@ -154,6 +204,11 @@ Generates an email address based on a name and a list of domains.
 
 Returns a string, an email address in the format 'name@domain'.
 
+**Example:**
+```javascript
+TODO
+```
+
 ---
 
 ### `gender()`
@@ -161,6 +216,11 @@ Returns a string, an email address in the format 'name@domain'.
 Generates a random gender as either 'Female' or 'Male.
 
 Returns a string, a randomly chosen gender, either 'Female' or 'Male'.
+
+**Example:**
+```javascript
+TODO
+```
 
 ---
 
@@ -170,6 +230,11 @@ Generates a random U.S. phone number in the format '(XXX) XXX-XXXX'.
 
 Returns a string, a random U.S. phone number in the specified format.
 
+**Example:**
+```javascript
+TODO
+```
+
 ---
 
 ### `SSN()`
@@ -178,6 +243,11 @@ Generates a random Social Security Number (SSN) in the format 'XXX-XXX-XXX'.
 
 Returns a string, a random SSN in the specified format.
 
+**Example:**
+```javascript
+TODO
+```
+
 ---
 
 ### `usAddress()`
@@ -185,6 +255,11 @@ Returns a string, a random SSN in the specified format.
 Generates a random U.S. address in the format 'StreetNumber StreetName, City, State ZIP Code'.
 
 Returns a string, a random U.S. address in the specified format.
+
+**Example:**
+```javascript
+TODO
+```
 
 ---
 
@@ -202,6 +277,11 @@ Generates a random person object with various properties.
 
 Returns an object, a randomly generated person object with properties such as 'id', 'phoneNumber', 'gender', 'name', 'ssn', 'email', and 'address'. Excludes properties if specified in `excludeProperties`.
 
+**Example:**
+```javascript
+TODO
+```
+
 ---
 
 ### `language()`
@@ -209,6 +289,11 @@ Returns an object, a randomly generated person object with properties such as 'i
 Generates a random language.
 
 Returns a string representing a randomly selected language.
+
+**Example:**
+```javascript
+TODO
+```
 
 ---
 
@@ -218,6 +303,11 @@ Generates a random marital status.
 
 Returns a string, a randomly selected marital status.
 
+**Example:**
+```javascript
+TODO
+```
+
 ---
 
 ### `universityAttended()`
@@ -225,6 +315,11 @@ Returns a string, a randomly selected marital status.
 Generates a random university.
 
 Returns a string, a randomly selected US university.
+
+**Example:**
+```javascript
+TODO
+```
 
 ---
 
@@ -246,6 +341,11 @@ Returns a string, the generated password based on the specified options.
 This function generates a password by selecting characters from different character sets, including lowercase letters, uppercase letters, digits, and special characters. The options allow customization of the password length and the inclusion of specific character sets. It utilizes the `crypto` module to generate secure random bytes for enhanced password security.
 
 
+**Example:**
+```javascript
+TODO
+```
+
 # Boolean
 
 ### `randomBoolean()`
@@ -253,6 +353,11 @@ This function generates a password by selecting characters from different charac
 Generates a random boolean value with a 50% chance of being true or false.
 
 Returns a boolean, either `true` or `false`.
+
+**Example:**
+```javascript
+TODO
+```
 
 ---
 
@@ -263,6 +368,11 @@ Generates a random boolean value based on a specified probability of being true.
 
 Returns a boolean, either `true` or `false`.
 
+**Example:**
+```javascript
+TODO
+```
+
 ---
 
 ### `randomBooleanArray(length)`
@@ -272,6 +382,11 @@ Generates an array of random boolean values.
   - `length` (number) - The length of the boolean array to generate.
 
 Returns an array of boolean values.
+
+**Example:**
+```javascript
+TODO
+```
 
 ---
 
@@ -284,6 +399,11 @@ Generates a sequence of random boolean values based on a specified probability o
 
 Returns an array of boolean values representing the generated sequence.
 
+**Example:**
+```javascript
+TODO
+```
+
 ---
 
 ### `weightedRandomBoolean(trueWeight, falseWeight)`
@@ -295,6 +415,11 @@ Generates a weighted random boolean value.
 
 Returns a boolean, either `true` or `false`, based on the specified weights.
 
+**Example:**
+```javascript
+TODO
+```
+
 ---
 
 ### `randomBooleanWithCondition(length)`
@@ -305,9 +430,93 @@ Generates an array of random boolean values with at least one true value.
 
 Returns an array of boolean values.
 
+**Example:**
+```javascript
+TODO
+```
 
 
+# Datetime
 
+### `getRandomDate(startDate, endDate)`
+
+Generates a random date within a specified range.
+
+- `startDate` (Date) - The start date of the range.
+- `endDate` (Date) - The end date of the range.
+
+Returns a randomly generated date within the specified range.
+
+**Example:**
+```javascript
+TODO
+```
+
+---
+
+### `getRandomTime()`
+
+Generates a random time in 24-hour format.
+
+Returns a string representing a random time in the format `hh:mm:ss`.
+
+**Example:**
+```javascript
+TODO
+```
+
+---
+
+
+### `dateDifference(date1, date2)`
+
+Calculates the difference between two dates and returns a human-readable string representation in terms of years, months, days, hours, minutes, and seconds.
+
+- `date1` (`Date`): The first date.
+- `date2` (`Date`): The second date.
+
+Returns a string representing the time difference between the two dates.
+
+**Example:**
+```javascript
+TODO
+```
+
+---
+
+### `countdownTimer(futureDate)`
+
+Calculates and returns a human-readable countdown timer string representing the time remaining between the current date and a specified future date.
+
+- `futureDate` (`Date`): The future date and time to count down to.
+
+Returns a string representing the time remaining in days, hours, minutes, and seconds.
+**Example:**
+```javascript
+// Set a future date (e.g., December 31, 2024, 23:59:59)
+const futureDate = new Date('2023-12-31T23:59:59');
+countdownTimer(futureDate);
+```
+
+---
+
+### `getAgeDetails(dateOfBirth)`
+
+Calculates and returns various details about the age based on the provided date of birth.
+
+- `dateOfBirth` (`string`): The date of birth in either "YYYY-MM-DD" or "MM-DD-YYYY" format.
+
+- **Throws**: an `Error` if the provided date of birth is invalid or in an unsupported format.
+
+Returns an object containing details about the age, including minutes, seconds, and milliseconds.
+
+**Example:**
+```javascript
+const customDateOfBirth1 = "1990-01-12";
+const customDateOfBirth2 = "01-12-1990";
+getAgeDetails(customDateOfBirth1); // Example with "YYYY-MM-DD" format
+getAgeDetails(customDateOfBirth2); // Example with "MM-DD-YYYY" format
+```
 
 
 ## Usage
