@@ -26,7 +26,8 @@ yarn add randulate
   - [emailFromNames(firstName, lastName, nameOrder)](#emailfromnamesfirstname-lastname-nameorder)
   - [randomEmail(gender)](#randomemailgender)
   - [emailByName(name)](#emailbynamename)
-  - [gender()](#gender)
+  - [gender(preferredGender)](#genderpreferredgender)
+  - [job()](#job)
   - [usPhoneNumber()](#usphonenumber)
   - [ssn()](#ssn)
   - [usAddress()](#usaddress)
@@ -70,7 +71,6 @@ Returns a number representing a random age within the specified range.
 const Randulate = require('randulate');
 const randomAge = Randulate.age();
 const age = Randulate.age(21, 44);
-
 ```
 
 ---
@@ -138,7 +138,6 @@ Returns an array of first names if `isArray` is `true`, or an object with key-va
 const Randulate = require('randulate');
 const femaleFirstNames = Randulate.firstNameObjectOrArray(0, true, 10);
 const maleFirstNames = Randulate.firstNameObjectOrArray(1, false, 5);
-
 ```
 
 ---
@@ -234,17 +233,33 @@ const email = Randulate.emailByName('Behnam Amiri');
 
 ---
 
-### `gender()`
+### `gender(preferredGender)`
 
-Generates a random gender as either 'Female' or 'Male.
+ Generates a gender based on the specified preference or randomly if no preference is provided.
+
 
 Returns a string, a randomly chosen gender, either 'Female' or 'Male'.
 
 **Example:**
 ```javascript
 const Randulate = require('randulate');
-const gender = Randulate.gender();
+const randomGender = Randulate.gender();
+const female = Randulate.gender(0);
+const male = Randulate.gender(1);
+```
 
+---
+
+### `job()`
+
+Generates a random job title from a predefined list.
+
+Returns a string, a randomly selected job title.
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const job = Randulate.job();
 ```
 
 ---
@@ -297,13 +312,18 @@ Generates a random person object with various properties.
 - `excludeProperties` (optional, array of strings): An optional array of property names to be excluded from the generated person object.
     - `id` (string): A version 4 UUID.
     - `phoneNumber` (string): A randomly generated US phone number.
+    - `language` (string): A randomly generated language.
     - `gender` (string): A randomly chosen gender, either 'Female' or 'Male'.
+    - `job` (string): A randomly generated job title.
     - `name` (string): A randomly generated name.
+    - `maritalStatus` (string): A random marital status.
     - `ssn` (string): A random Social Security Number.
+    - `universityAttended` (string): A randomly generated US university.
     - `email` (string): A randomly generated email based on the person's name.
     - `address` (string): A randomly generated US address.
 
-Returns an object, a randomly generated person object with properties such as 'id', 'phoneNumber', 'gender', 'name', 'ssn', 'email', and 'address'. Excludes properties if specified in `excludeProperties`.
+Returns an object, a randomly generated person object with properties such as `id`, `phoneNumber`, `language`,  `gender`, `job`, `name`, `maritalStatus`,
+`ssn`, `universityAttended`, `email`, and `address`. Excludes properties if specified in `excludeProperties`.
 
 **Example:**
 ```javascript
@@ -383,7 +403,6 @@ const options = {
   lengthRange: { min: 15, max: 18 }
 };
 const password = Randulate.password(16, options);
-
 ```
 
 # Boolean

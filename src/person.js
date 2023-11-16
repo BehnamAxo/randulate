@@ -2,6 +2,7 @@ const commonStreetNames = require('../lib/consts/commonStreetName');
 const crypto = require('crypto');
 const domains = require('../lib/consts/emailDomains');
 const femaleFirstNames = require('../lib/consts/femaleFirstName');
+const jobTitles = require('../lib/consts/jobTitle');
 const languages = require('../lib/consts/languages');
 const lastNames = require('../lib/consts/lastName');
 const maleFirstNames = require('../lib/consts/maleFirstName');
@@ -16,7 +17,6 @@ const {
   getRandomElement,
   giveMeRandomInt
 } = require('./helper');
-
 
 
 /**
@@ -165,11 +165,32 @@ const emailByName = (name) => {
 
 
 /**
- * Generates a random gender as either 'Female' or 'Male'.
+ * Generates a gender based on the specified preference or randomly if no preference is provided.
  *
- * @returns {string} A randomly chosen gender, either 'Female' or 'Male'.
+ * e.g: Randulate.gender(); Randulate.gender(0); Randulate.gender(1);
+ *
+ * @param {number} [preferredGender] - An optional preferred gender (0 for 'Female', 1 for 'Male').
+ * @returns {string} The selected gender.
  */
-const gender = () => Math.random() < 0.5 ? 'Female' : 'Male';
+const gender = (preferredGender) => {
+  if (preferredGender === 1 || preferredGender === 0) {
+    return preferredGender === 0  ? 'Female' : 'Male';
+  } else {
+    return Math.random() < 0.5 ? 'Female' : 'Male';
+  }
+};
+
+
+/**
+ * Generates a random job title from a predefined list.
+ *
+ * @returns {string} A randomly selected job title.
+ */
+const job = () => {
+  const int = giveMeRandomInt(0, jobTitles.length - 1);
+
+  return jobTitles[int];
+};
 
 
 /**
@@ -219,20 +240,30 @@ const usAddress = () => {
  * @returns {object} A randomly generated person object with the following properties:
  *   - id (string): A version 4 UUID
  *   - phoneNumber (string): A randomly generated US phone number
+ *   - language (string): A randomly generated language
  *   - gender (string): A randomly chosen gender, either 'Female' or 'Male'
+ *   - job (string): A randomly generated job title
  *   - name (string): A randomly generated name
+ *   - maritalStatus (string): A random marital status
  *   - ssn (number): A random Social Security Number
+ *   - universityAttended (string): A randomly generated US university
  *   - email (string): A randomly generated email based on the person's name
  *   - address (string): A randomly generated US address
  */
 const person = (excludeProperties) => {
-  const personName = name();
+  const int = giveMeRandomInt(0, 1); // Make sure name and gender match
+  const personName = name(int);
+
   const person = {
     id: generateUUID(),
     phoneNumber: usPhoneNumber(),
-    gender: gender(),
+    language: language(),
+    gender: gender(int),
+    job: job(),
     name: personName,
+    maritalStatus: maritalStatus(),
     ssn: ssn(),
+    universityAttended: universityAttended(),
     email: emailByName(personName),
     address: usAddress()
   };
@@ -340,6 +371,7 @@ module.exports = {
   firstName,
   firstNameObjectOrArray,
   gender,
+  job,
   language,
   lastName,
   lastNameObjectOrArray,
