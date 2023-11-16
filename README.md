@@ -26,7 +26,8 @@ yarn add randulate
   - [emailFromNames(firstName, lastName, nameOrder)](#emailfromnamesfirstname-lastname-nameorder)
   - [randomEmail(gender)](#randomemailgender)
   - [emailByName(name)](#emailbynamename)
-  - [gender()](#gender)
+  - [gender(preferredGender)](#genderpreferredgender)
+  - [job()](#job)
   - [usPhoneNumber()](#usphonenumber)
   - [ssn()](#ssn)
   - [usAddress()](#usaddress)
@@ -42,6 +43,8 @@ yarn add randulate
   - [randomBooleanSequence(length, trueProbability)](#randombooleansequencelength-trueprobability)
   - [weightedRandomBoolean(trueWeight, falseWeight)](#weightedrandombooleantrueweight-falseweight)
   - [randomBooleanWithCondition(length)](#randombooleanwithconditionlength)
+  - [generateRandomBooleanMatrix(rows, columns)](#generaterandombooleanmatrixrows-columns)
+  - [binaryLogicOperation(value1, value2, operation)](#binarylogicoperationvalue1-value2-operation)
 - [Datetime](#datetime)
   - [getRandomDate(startDate, endDate)](#getrandomdatestartdate-enddate)
   - [getRandomTime()](#getrandomtime)
@@ -70,7 +73,6 @@ Returns a number representing a random age within the specified range.
 const Randulate = require('randulate');
 const randomAge = Randulate.age();
 const age = Randulate.age(21, 44);
-
 ```
 
 ---
@@ -138,7 +140,6 @@ Returns an array of first names if `isArray` is `true`, or an object with key-va
 const Randulate = require('randulate');
 const femaleFirstNames = Randulate.firstNameObjectOrArray(0, true, 10);
 const maleFirstNames = Randulate.firstNameObjectOrArray(1, false, 5);
-
 ```
 
 ---
@@ -234,17 +235,33 @@ const email = Randulate.emailByName('Behnam Amiri');
 
 ---
 
-### `gender()`
+### `gender(preferredGender)`
 
-Generates a random gender as either 'Female' or 'Male.
+ Generates a gender based on the specified preference or randomly if no preference is provided.
+
 
 Returns a string, a randomly chosen gender, either 'Female' or 'Male'.
 
 **Example:**
 ```javascript
 const Randulate = require('randulate');
-const gender = Randulate.gender();
+const randomGender = Randulate.gender();
+const female = Randulate.gender(0);
+const male = Randulate.gender(1);
+```
 
+---
+
+### `job()`
+
+Generates a random job title from a predefined list.
+
+Returns a string, a randomly selected job title.
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const job = Randulate.job();
 ```
 
 ---
@@ -297,13 +314,18 @@ Generates a random person object with various properties.
 - `excludeProperties` (optional, array of strings): An optional array of property names to be excluded from the generated person object.
     - `id` (string): A version 4 UUID.
     - `phoneNumber` (string): A randomly generated US phone number.
+    - `language` (string): A randomly generated language.
     - `gender` (string): A randomly chosen gender, either 'Female' or 'Male'.
+    - `job` (string): A randomly generated job title.
     - `name` (string): A randomly generated name.
+    - `maritalStatus` (string): A random marital status.
     - `ssn` (string): A random Social Security Number.
+    - `universityAttended` (string): A randomly generated US university.
     - `email` (string): A randomly generated email based on the person's name.
     - `address` (string): A randomly generated US address.
 
-Returns an object, a randomly generated person object with properties such as 'id', 'phoneNumber', 'gender', 'name', 'ssn', 'email', and 'address'. Excludes properties if specified in `excludeProperties`.
+Returns an object, a randomly generated person object with properties such as `id`, `phoneNumber`, `language`,  `gender`, `job`, `name`, `maritalStatus`,
+`ssn`, `universityAttended`, `email`, and `address`. Excludes properties if specified in `excludeProperties`.
 
 **Example:**
 ```javascript
@@ -383,7 +405,6 @@ const options = {
   lengthRange: { min: 15, max: 18 }
 };
 const password = Randulate.password(16, options);
-
 ```
 
 # Boolean
@@ -479,6 +500,43 @@ Returns an array of boolean values.
 ```javascript
 const Randulate = require('randulate');
 const randomBooleanWithCondition = Randulate.randomBooleanWithCondition(5);
+```
+
+---
+
+### `generateRandomBooleanMatrix(rows, columns)`
+
+Generates a random boolean matrix with the specified number of rows and columns.
+
+- `rows` (number) - The number of rows in the matrix.
+- `columns` (number) - The number of columns in the matrix.
+
+Returns a 2D array representing the random boolean matrix.
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const randomMatrix = Randulate.generateRandomBooleanMatrix(3, 3);
+const randomMatrix = Randulate.generateRandomBooleanMatrix(5, 5);
+```
+
+---
+
+### `binaryLogicOperation(value1, value2, operation)`
+
+Performs a binary logic operation on two boolean values based on the specified operation.
+
+- `value1` (boolean) - The first boolean value.
+- `value2` (boolean) - The second boolean value.
+- `operation` (string) - The logic operation to be performed.
+Possible values: `AND`, `OR`, `NOT`, `NAND`, `NOR`, `XOR`, `XNOR`.
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const result1 = binaryLogicOperation(true, false, 'AND');
+const result2 = binaryLogicOperation(true, false, 'OR');
+const result3 = binaryLogicOperation(true, null, 'NOT');
 ```
 
 

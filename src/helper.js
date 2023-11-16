@@ -1,5 +1,17 @@
 const crypto = require('crypto');
 
+
+const logicGate = {
+  AND: 'AND',
+  OR: 'OR',
+  NOT: 'NOT',
+  NAND: 'NAND',
+  NOR: 'NOR',
+  XOR: 'XOR',
+  XNOR: 'XNOR'
+}
+
+
 /**
  * Generates a random integer between the specified minimum and maximum values (inclusive).
  *
@@ -101,7 +113,7 @@ const getTimeUnits = () => {
     { label: 'day', ms: 24 * 60 * 60 * 1000 },
     { label: 'hour', ms: 60 * 60 * 1000 },
     { label: 'minute', ms: 60 * 1000 },
-    { label: 'second', ms: 1000 },
+    { label: 'second', ms: 1000 }
   ];
 }
 
@@ -184,5 +196,6 @@ module.exports = {
   giveMeRandomInt,
   hexToRgb,
   interpolate,
+  logicGate,
   rgbToHex
 }
