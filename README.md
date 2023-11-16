@@ -43,6 +43,8 @@ yarn add randulate
   - [randomBooleanSequence(length, trueProbability)](#randombooleansequencelength-trueprobability)
   - [weightedRandomBoolean(trueWeight, falseWeight)](#weightedrandombooleantrueweight-falseweight)
   - [randomBooleanWithCondition(length)](#randombooleanwithconditionlength)
+  - [generateRandomBooleanMatrix(rows, columns)](#generaterandombooleanmatrixrows-columns)
+  - [binaryLogicOperation(value1, value2, operation)](#binarylogicoperationvalue1-value2-operation)
 - [Datetime](#datetime)
   - [getRandomDate(startDate, endDate)](#getrandomdatestartdate-enddate)
   - [getRandomTime()](#getrandomtime)
@@ -520,7 +522,7 @@ const randomMatrix = Randulate.generateRandomBooleanMatrix(5, 5);
 
 ---
 
-`binaryLogicOperation(value1, value2, operation)`
+### `binaryLogicOperation(value1, value2, operation)`
 
 Performs a binary logic operation on two boolean values based on the specified operation.
 
