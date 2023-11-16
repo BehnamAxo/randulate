@@ -500,6 +500,43 @@ const Randulate = require('randulate');
 const randomBooleanWithCondition = Randulate.randomBooleanWithCondition(5);
 ```
 
+---
+
+### `generateRandomBooleanMatrix(rows, columns)`
+
+Generates a random boolean matrix with the specified number of rows and columns.
+
+- `rows` (number) - The number of rows in the matrix.
+- `columns` (number) - The number of columns in the matrix.
+
+Returns a 2D array representing the random boolean matrix.
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const randomMatrix = Randulate.generateRandomBooleanMatrix(3, 3);
+const randomMatrix = Randulate.generateRandomBooleanMatrix(5, 5);
+```
+
+---
+
+`binaryLogicOperation(value1, value2, operation)`
+
+Performs a binary logic operation on two boolean values based on the specified operation.
+
+- `value1` (boolean) - The first boolean value.
+- `value2` (boolean) - The second boolean value.
+- `operation` (string) - The logic operation to be performed.
+Possible values: `AND`, `OR`, `NOT`, `NAND`, `NOR`, `XOR`, `XNOR`.
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const result1 = binaryLogicOperation(true, false, 'AND');
+const result2 = binaryLogicOperation(true, false, 'OR');
+const result3 = binaryLogicOperation(true, null, 'NOT');
+```
+
 
 # Datetime
 

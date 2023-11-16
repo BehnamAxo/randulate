@@ -1,3 +1,5 @@
+const { logicGate } = require('./helper');
+
 /**
  * Generates a random boolean value with a 50% chance of being true or false.
  *
@@ -100,10 +102,88 @@ const weightedRandomBoolean = (trueWeight, falseWeight) => {
 }
 
 
+/**
+ * Generates a random boolean matrix with the specified number of rows and columns.
+ *
+ * @param {number} rows - The number of rows in the matrix.
+ * @param {number} columns - The number of columns in the matrix.
+ *
+ * @returns {Array<Array<boolean>>} - A 2D array representing the random boolean matrix.
+ *
+ * @example
+ *
+ * const randomMatrix = generateRandomBooleanMatrix(3, 3);
+ * const randomMatrix = generateRandomBooleanMatrix(10, 10);
+ */
+const generateRandomBooleanMatrix = (rows, columns) => {
+  const matrix = [];
+  for (let i = 0; i < rows; i++) {
+    const row = [];
+    for (let j = 0; j < columns; j++) {
+      row.push(randomBoolean());
+    }
+    matrix.push(row);
+  }
+
+  return matrix;
+}
+
+
+/**
+ * Performs a binary logic operation on two boolean values based on the specified operation.
+ *
+ * @param {boolean} value1 - The first boolean value.
+ * @param {boolean} value2 - The second boolean value.
+ * @param {string} operation - The logic operation to be performed.
+ *   Possible values: 'AND', 'OR', 'NOT', 'NAND', 'NOR', 'XOR', 'XNOR'.
+ *
+ * @returns {?boolean} - The result of the binary logic operation.
+ *   Returns null if an invalid operation is provided.
+ *
+ * @example
+ * const result1 = binaryLogicOperation(true, false, 'AND');
+ * const result2 = binaryLogicOperation(true, false, 'OR');
+ * const result3 = binaryLogicOperation(true, null, 'NOT');
+ *
+ * console.log(result1); // Output: false
+ * console.log(result2); // Output: true
+ * console.log(result3); // Output: false
+ */
+const binaryLogicOperation = (value1, value2, operation) => {
+  switch (operation) {
+    case logicGate.AND:
+      return value1 && value2;
+
+    case logicGate.OR:
+      return value1 || value2;
+
+    case logicGate.NOT:
+      return !value1;
+
+    case logicGate.NAND:
+      return !(value1 && value2);
+
+    case logicGate.NOR:
+      return !(value1 || value2);
+
+    case logicGate.XOR:
+      return (value1 || value2) && !(value1 && value2);
+
+    case logicGate.XNOR:
+      return !(value1 || value2) || (value1 && value2);
+
+    default:
+      return null;
+  }
+}
+
+
 module.exports = {
   randomBoolean,
+  generateRandomBooleanMatrix,
   randomBooleanArray,
   randomBooleanSequence,
+  binaryLogicOperation,
   randomBooleanWithCondition,
   randomBooleanWithProbability,
   weightedRandomBoolean

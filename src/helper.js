@@ -1,5 +1,17 @@
 const crypto = require('crypto');
 
+
+const logicGate = {
+  AND: 'AND',
+  OR: 'OR',
+  NOT: 'NOT',
+  NAND: 'NAND',
+  NOR: 'NOR',
+  XOR: 'XOR',
+  XNOR: 'XNOR'
+}
+
+
 /**
  * Generates a random integer between the specified minimum and maximum values (inclusive).
  *
@@ -184,5 +196,6 @@ module.exports = {
   giveMeRandomInt,
   hexToRgb,
   interpolate,
+  logicGate,
   rgbToHex
 }
