@@ -45,6 +45,7 @@ yarn add randulate
   - [randomBooleanWithCondition(length)](#randombooleanwithconditionlength)
   - [generateRandomBooleanMatrix(rows, columns)](#generaterandombooleanmatrixrows-columns)
   - [binaryLogicOperation(value1, value2, operation)](#binarylogicoperationvalue1-value2-operation)
+  - [booleanFlipFlop(length)](#booleanflipfloplength)
 - [Datetime](#datetime)
   - [getRandomDate(startDate, endDate)](#getrandomdatestartdate-enddate)
   - [getRandomTime()](#getrandomtime)
@@ -683,6 +684,22 @@ const Randulate = require('randulate');
 const color1 = '#FF0000';
 const color2 = '#00FF00';
 const interpolatedColor = Randulate.interpolateColor(color1, color2, 50);
+```
+
+---
+
+### `booleanFlipFlop(length)`
+
+Generates a sequence of boolean values alternating between true and false based on the specified length.
+
+- `length` (`number`): The length of the boolean sequence to generate. Must be a positive integer.
+
+Returns an array containing boolean values that alternate between true and false. (Or undefined if the provided length is not a valid positive integer)
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const booleanFlipFlop = Randulate.booleanFlipFlop(10);
 ```
 
 

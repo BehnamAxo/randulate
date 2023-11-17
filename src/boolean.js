@@ -178,12 +178,37 @@ const binaryLogicOperation = (value1, value2, operation) => {
 }
 
 
+/**
+ * Generates a sequence of boolean values alternating between true and false based on the specified length.
+ *
+ * @param {number} length - The length of the boolean sequence to generate. Must be a positive integer.
+ * @returns {Array} An array containing boolean values that alternate between true and false.
+ *                  Returns undefined if the provided length is not a valid positive integer.
+ */
+const booleanFlipFlop = (length) => {
+  if (!Number.isInteger(length) || length <= 0) {
+    console.error('Please provide a valid positive integer for the length.');
+
+    return;
+  }
+
+  const array = [];
+
+  for (i = 0; i < length; i++) {
+    array.push(i % 2 === 0);
+  }
+
+  return array;
+}
+
+
 module.exports = {
-  randomBoolean,
+  binaryLogicOperation,
+  booleanFlipFlop,
   generateRandomBooleanMatrix,
+  randomBoolean,
   randomBooleanArray,
   randomBooleanSequence,
-  binaryLogicOperation,
   randomBooleanWithCondition,
   randomBooleanWithProbability,
   weightedRandomBoolean
