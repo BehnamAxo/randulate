@@ -1,0 +1,1 @@
+const countries = require('../lib/consts/countries');
