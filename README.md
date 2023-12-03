@@ -55,6 +55,15 @@ yarn add randulate
   - [getHexColor()](#gethexcolor)
   - [getColorName()](#getcolorname)
   - [interpolateColor(color1, color2, percentage)](#interpolatecolorcolor1-color2-percentage)
+- [Country](#country)
+  - [getCountryInfo(countryName)](#getcountryinfocountryname)
+  - [listAllCountries()](#listallcountries)
+  - [getTotalPopulation()](#gettotalpopulation)
+  - [getCountriesByDrivingSide(side)](#getcountriesbydrivingsideside)
+  - [getCountriesWithLargerAreaThan(thresholdArea)](#getcountrieswithlargerareathanthresholdarea)
+  - [findCountriesByCapital(targetCapital)](#findcountriesbycapitaltargetcapital)
+  - [sortCountriesByPopulation()](#sortcountriesbypopulation)
+  - [getLargestCountryByArea()](#getlargestcountrybyarea)
 - [Feedback](#feedback)
 
 ---
@@ -700,6 +709,126 @@ Returns an array containing boolean values that alternate between true and false
 ```javascript
 const Randulate = require('randulate');
 const booleanFlipFlop = Randulate.booleanFlipFlop(10);
+```
+
+
+# Country
+
+### `getCountryInfo(countryName)`
+
+Retrieves information about a specific country based on its name.
+
+- `countryName` (`string`): The name of the country for which information is to be retrieved.
+
+Returns an object containing details about the specified country, or null if the country is not found in the available data.
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const countryInfo = getCountryInfo('brazil');
+```
+
+---
+
+### `listAllCountries()`
+
+Retrieves and returns an array containing the names of all countries.
+
+Returns an array of strings, where each string represents the name of a country available in the dataset.
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const allCountries = listAllCountries();
+```
+
+---
+
+### `getTotalPopulation()`
+
+Calculates and returns the total approximate population of all countries.
+
+Returns a numeric value representing the sum of the approximate populations of all countries available in the dataset.
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const totalPopulation = getTotalPopulation();
+```
+
+---
+
+### `getCountriesByDrivingSide(side)`
+
+Retrieves countries based on their driving side and returns an array of their names.
+
+- `side` (`string`): The driving side to filter countries by ('Right' or 'Left').
+
+Returns an array of strings, where each string represents the name of a country with the specified driving side. If no countries match the specified driving side, an empty array is returned.
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const countriesWithRightDriving = getCountriesByDrivingSide('Right');
+```
+
+---
+
+### `getCountriesWithLargerAreaThan(thresholdArea)`
+Retrieves countries with an area in square miles larger than a specified threshold and returns an array of their names.
+
+- `thresholdArea` (`number`): The minimum area in square miles required for a country to be included.
+
+Returns an array of strings, where each string represents the name of a country with an area larger than the specified threshold. If no countries meet the criteria, an empty array is returned.
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const countriesWithLargerArea = getCountriesWithLargerAreaThan(1000000);
+```
+
+---
+
+### `findCountriesByCapital(targetCapital)`
+
+Finds countries with a specified capital (case-insensitive) and returns an array of their names.
+
+- `targetCapital` (`string`): The capital to search for among the countries.
+
+Returns an array of strings, where each string represents the name of a country with the specified capital. If no countries match the specified capital, an empty array is returned.
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const countriesWithCapital = findCountriesByCapital('Paris');
+```
+
+---
+
+### `sortCountriesByPopulation()`
+
+Sorts countries by population in descending order and returns an array of country names.
+
+Returns an array of strings, where each string represents the name of a country, sorted in descending order based on their approximate population.
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const sortedCountriesByPopulation = sortCountriesByPopulation();
+```
+
+---
+
+### `getLargestCountryByArea()`
+
+Retrieves the name of the largest country by area in square miles from a collection of countries.
+
+Returns a string representing the name of the largest country by area or null if the collection is empty.
+
+**Example:**
+```javascript
+const Randulate = require('randulate');
+const largestCountry = getLargestCountryByArea();
 ```
 
 
