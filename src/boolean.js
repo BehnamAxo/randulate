@@ -1,5 +1,6 @@
 const { logicGate } = require('./helper');
 
+
 /**
  * Generates a random boolean value with a 50% chance of being true or false.
  *

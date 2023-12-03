@@ -186,8 +186,24 @@ const interpolate = (c1, c2, ratio) => {
 };
 
 
+/**
+ * Filters an object of countries based on a specified property and condition.
+ *
+ * @param {string} property - The property to filter the countries by (e.g., 'currency', 'drivingSide', 'area').
+ * @param {Function} condition - A function that takes the property value and returns a boolean indicating whether the country should be included.
+ * @param {Object} countries - An object containing country details, where each key is a country name or code, and each value is an object with properties like 'currency', 'drivingSide', 'area', etc.
+ *
+ * @returns {Array} An array of country names that satisfy the specified condition for the given property.
+ */
+const filterByProperty = (property, condition, countries) =>
+  Object.entries(countries)
+    .filter(([, countryDetails]) => condition(countryDetails[property]))
+    .map(([countryName]) => countryName);
+
+
 module.exports = {
   calculateAgeInMilliseconds,
+  filterByProperty,
   generateObjectOrArray,
   generateRandomNumber,
   generateUUID,
