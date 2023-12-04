@@ -544,9 +544,9 @@ Possible values: `AND`, `OR`, `NOT`, `NAND`, `NOR`, `XOR`, `XNOR`.
 **Example:**
 ```javascript
 const Randulate = require('randulate');
-const result1 = binaryLogicOperation(true, false, 'AND');
-const result2 = binaryLogicOperation(true, false, 'OR');
-const result3 = binaryLogicOperation(true, null, 'NOT');
+const result1 = Randulate.binaryLogicOperation(true, false, 'AND');
+const result2 = Randulate.binaryLogicOperation(true, false, 'OR');
+const result3 = Randulate.binaryLogicOperation(true, null, 'NOT');
 ```
 
 
@@ -670,7 +670,7 @@ Returns a randomly selected color name from the list.
 **Example:**
 ```javascript
 const Randulate = require('randulate');
-const colorName = getColorName();
+const colorName = Randulate.getColorName();
 ```
 
 ---
@@ -725,7 +725,7 @@ Returns an object containing details about the specified country, or null if the
 **Example:**
 ```javascript
 const Randulate = require('randulate');
-const countryInfo = getCountryInfo('brazil');
+const countryInfo = Randulate.getCountryInfo('brazil');
 ```
 
 ---
@@ -739,7 +739,7 @@ Returns an array of strings, where each string represents the name of a country 
 **Example:**
 ```javascript
 const Randulate = require('randulate');
-const allCountries = listAllCountries();
+const allCountries = Randulate.listAllCountries();
 ```
 
 ---
@@ -753,7 +753,7 @@ Returns a numeric value representing the sum of the approximate populations of a
 **Example:**
 ```javascript
 const Randulate = require('randulate');
-const totalPopulation = getTotalPopulation();
+const totalPopulation = Randulate.getTotalPopulation();
 ```
 
 ---
@@ -769,7 +769,7 @@ Returns an array of strings, where each string represents the name of a country 
 **Example:**
 ```javascript
 const Randulate = require('randulate');
-const countriesWithRightDriving = getCountriesByDrivingSide('Right');
+const countriesWithRightDriving = Randulate.getCountriesByDrivingSide('Right');
 ```
 
 ---
@@ -784,7 +784,7 @@ Returns an array of strings, where each string represents the name of a country 
 **Example:**
 ```javascript
 const Randulate = require('randulate');
-const countriesWithLargerArea = getCountriesWithLargerAreaThan(1000000);
+const countriesWithLargerArea = Randulate.getCountriesWithLargerAreaThan(1000000);
 ```
 
 ---
@@ -800,7 +800,7 @@ Returns an array of strings, where each string represents the name of a country 
 **Example:**
 ```javascript
 const Randulate = require('randulate');
-const countriesWithCapital = findCountriesByCapital('Paris');
+const countriesWithCapital = Randulate.findCountriesByCapital('Paris');
 ```
 
 ---
@@ -814,7 +814,7 @@ Returns an array of strings, where each string represents the name of a country,
 **Example:**
 ```javascript
 const Randulate = require('randulate');
-const sortedCountriesByPopulation = sortCountriesByPopulation();
+const sortedCountriesByPopulation = Randulate.sortCountriesByPopulation();
 ```
 
 ---
@@ -828,7 +828,7 @@ Returns a string representing the name of the largest country by area or null if
 **Example:**
 ```javascript
 const Randulate = require('randulate');
-const largestCountry = getLargestCountryByArea();
+const largestCountry = Randulate.getLargestCountryByArea();
 ```
 
 
